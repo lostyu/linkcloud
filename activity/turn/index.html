@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>幸运大转盘</title>
+    <link rel="stylesheet" href="../../res/css/base.css">
+    <style>
+        body, html{
+            background-color: #30b6ce;
+        }
+
+        .m-turn{
+            padding-top: 20px;
+            background-color: #30b6ce;
+        }
+        .m-turn *{
+            box-sizing: border-box;
+        }
+
+        .m-turn .text1{
+            position: relative;
+            color: #fff;
+            text-align: center;
+        }
+        .m-turn .text1 .count{
+            display: inline-block;
+            padding: 0 16px;
+            height:28px;
+            line-height:28px;
+            border-radius: 20px;
+            background-color: #1d93a8;
+            font-size: 14px;
+        }
+        .m-turn .text1 .u-btn{
+            position: absolute;
+            top:0;
+            right:10px;
+            border-radius: 12px;
+        }
+
+        .m-turn .turn{
+            display: block;
+            width:90%;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top:20px;
+        }
+        .m-turn .turn .inner{
+            display: block;
+            width: 100%;
+            min-height:288px;
+            position: relative;
+            background: url(turnplate-bg.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .m-turn .turn .canvas{
+            width: 100%;
+        }
+        .m-turn .turn .start{
+            position: absolute;
+            width: 30%;
+            left:50%;
+            top:50%;
+            transform: translate(-43%,-50%);
+        }
+
+        .m-turn .text2{
+            margin-top:20px;
+            text-align: center;
+        }
+
+
+
+        .m-box{
+            margin:10px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #1d93a8;
+            color: #fff;
+        }
+        .m-box h2{
+            margin-bottom: 10px;
+        }
+        .m-box .title{
+            color: #3fe6ff;
+            margin-bottom:5px;
+        }
+        .m-box p{
+            margin-bottom:10px;
+        }
+        .m-box p:last-child{
+            margin-bottom:0;
+        }
+
+
+        .u-btn{
+            display: inline-block;
+            padding: 4px 8px;
+            color: #fff;
+            border: 1px solid transparent;
+        }
+        .u-btn-1{
+            background-color: #ff5d5d;
+        }
+        .u-btn-2{
+            border-color: #fff;
+        }
+        .u-btn-lg{
+            padding: 8px 20px;
+        }
+        .u-btn-rd{
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="m-turn">
+
+    <div class="text1">
+        <p class="count">今日还有1次抽奖机会</p>
+        <a class="u-btn u-btn-2" href="javascript:;">分享</a>
+    </div>
+
+    <div class="turn">
+        <div class="inner" id="j-turnBox">
+            <canvas id="c1" class="canvas"></canvas>
+            <img id="j-start" class="start" src="btn-start.png">
+        </div>
+    </div>
+
+    <div class="text2">
+        <a class="u-btn u-btn-1 u-btn-lg u-btn-rd" href="javascript:;">我的中奖纪录</a>
+    </div>
+
+    <!-- 活动规则 -->
+    <div class="m-box rule">
+        <h2>活动规则</h2>
+        <p class="title">抽奖时间</p>
+        <p>长期（每天可以抽取一次）</p>
+
+        <p class="title">抽奖资格</p>
+        <p>所有关注微信公众账号用户均可以参加</p>
+
+        <p class="title">奖品说明</p>
+        <p>单次消费1万元可以使用抵用券一张，不找零，不兑现</p>
+
+        <p class="title">备注</p>
+        <p>回复VIP进入会员中心，在“优惠券”选项中可以管理查看所有奖励</p>
+
+    </div>
+    <!-- /活动规则 -->
+
+    <!-- 奖品设置 -->
+    <div class="m-box settings">
+        <h2>奖品设置</h2>
+
+        <p>一等奖：500元现金抵用券</p>
+
+        <p>二等奖：300元现金抵用券</p>
+
+        <p>三等奖：100元现金抵用券</p>
+
+        <p>四等奖：10元现金抵用券</p>
+
+    </div>
+    <!-- /奖品设置 -->
+
+</div>
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://www.datouwang.com/uploads/demo/jiaoben/2015/jiaoben532/js/awardRotate.js"></script>
+<script>
+    $(function(){
+        var $turnBOx = $('#j-turnBox');
+        var w = $turnBOx.width();
+        $turnBOx.css('height', w);
+
+        var turnplate = {
+            restaraunts:[
+                 "二等奖", "三等奖", "四等奖", "谢谢惠顾", "明天再来 ", "不要灰心", "继续抽奖", "参与奖"
+            ],				            //大转盘奖品名称
+            colors:["#5fd9c7", "#FFFFFF","#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF","#5fd9c7", "#FFFFFF"],        					//大转盘奖品区块对应背景颜色
+
+
+            startAngle:0,				//开始角度
+
+            bRotate:false				//false:停止;ture:旋转
+        };
+        var turn = new Turn(turnplate);
+
+
+
+        $('#j-start').click(function(){
+            console.log(turn.options.bRotate);
+            if(turn.options.bRotate){
+                return;
+            }
+            turn.options.bRotate = !turn.options.bRotate;
+
+            $('#c1').stopRotate();
+            $('#c1').rotate({
+                angle:0,
+                animateTo:1800,
+                duration:8000,
+                callback:function (){
+//                    alert(txt);
+                    turn.options.bRotate = !turn.options.bRotate;
+                }
+            });
+        });
+    });
+
+    function Turn(options){
+        var _defaults = {
+
+        };
+        this.oc = document.getElementById('c1');
+        this.oct = this.oc.getContext('2d');
+        this.w = 422;
+        this.options = $.extend(_defaults, options);
+
+        this._init();
+    }
+
+    Turn.prototype = {
+        _init: function(){
+            this.oc.width = this.w;
+            this.oc.height = this.w;
+
+            this.options.outsideRadius = this.w/2 - 20;		//大转盘外圆的半径
+            this.options.insideRadius = 50;			    //大转盘内圆的半径
+            this.options.textRadius = 155;				//大转盘奖品位置距离圆心的距离
+
+            var arc = Math.PI / ( this.options.restaraunts.length / 2);
+            this.oct.clearRect(0,0,this.w,this.w);
+            this.oct.strokeStyle = 'transparent';
+
+            for(var i=0;i<this.options.restaraunts.length;i++){
+                // 绘制圆
+                var angle = this.options.startAngle + i * arc;
+                this.oct.fillStyle = this.options.colors[i];
+                this.oct.beginPath();
+                this.oct.arc(this.w/2, this.w/2, this.options.outsideRadius, angle, angle + arc, false);
+                this.oct.arc(this.w/2, this.w/2, this.options.insideRadius, angle + arc, angle, true);
+                this.oct.stroke();
+                this.oct.fill();
+                this.oct.save();
+
+                // 绘制奖品
+                this.oct.fillStyle = '#e5302f';
+                this.oct.font = 'bold 22px "Helvetica Neue", Helvetica, Arial, sans-serif';
+                var text = this.options.restaraunts[i];
+                this.oct.translate(this.w/2 + Math.cos(angle+arc/2) * this.options.textRadius
+                , this.w/2 + Math.sin(angle + arc /2 ) * this.options.textRadius);
+                this.oct.rotate(angle + arc/2 + Math.PI / 2);
+
+                for(var j=0;j<text.length;j++){
+                    this.oct.fillText(text[j],-this.oct.measureText(text[j]).width/2, j*22);
+                }
+
+                this.oct.restore();
+
+            }
+
+        }
+    };
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
