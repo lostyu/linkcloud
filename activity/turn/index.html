@@ -7,112 +7,147 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
     <title>幸运大转盘</title>
-    <link rel="stylesheet" href="../../res/css/base.css">
     <style>
-        body, html{
+        /* reset */
+        html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: normal;
+            font-size: 100%;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        html, body {
+            font: 16px/1.14 "Helvetica Neue", Helvetica, Arial, sans-serif;
             background-color: #30b6ce;
         }
 
-        .m-turn{
+        .m-turn {
             padding-top: 20px;
             background-color: #30b6ce;
         }
-        .m-turn *{
-            box-sizing: border-box;
-        }
 
-        .m-turn .text1{
+        .m-turn .text1 {
             position: relative;
             color: #fff;
             text-align: center;
         }
-        .m-turn .text1 .count{
+
+        .m-turn .text1 .count {
             display: inline-block;
             padding: 0 16px;
-            height:28px;
-            line-height:28px;
+            height: 28px;
+            line-height: 28px;
             border-radius: 20px;
             background-color: #1d93a8;
             font-size: 14px;
         }
-        .m-turn .text1 .u-btn{
+
+        .m-turn .text1 .u-btn {
             position: absolute;
-            top:0;
-            right:10px;
+            top: 0;
+            right: 10px;
             border-radius: 12px;
         }
 
-        .m-turn .turn{
+        .m-turn .turn {
             display: block;
-            width:90%;
-            margin-left:auto;
-            margin-right:auto;
-            margin-top:20px;
-        }
-        .m-turn .turn .inner{
-            display: block;
-            width: 100%;
-            min-height:288px;
-            position: relative;
-            background: url(turnplate-bg.png) no-repeat;
-            background-size: 100% 100%;
-        }
-        .m-turn .turn .canvas{
-            width: 100%;
-        }
-        .m-turn .turn .start{
-            position: absolute;
-            width: 30%;
-            left:50%;
-            top:50%;
-            transform: translate(-43%,-50%);
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
         }
 
-        .m-turn .text2{
-            margin-top:20px;
+        .m-turn .turn .inner {
+            display: block;
+            width: 100%;
+            position: relative;
+            background: url(img/turnplate-bg.png) no-repeat;
+            background-size: 100%;
+
+        }
+
+        .m-turn .turn .canvas {
+            width: 100%;
+            transform: rotate(0deg);
+        }
+
+        .m-turn .turn .start {
+            position: absolute;
+            width: 30%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-43%, -53%);
+            vertical-align: middle;
+        }
+
+        .m-turn .text2 {
+            margin-top: 20px;
             text-align: center;
         }
 
+        .m-turn .text2 .count {
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 14px;
+        }
 
-
-        .m-box{
-            margin:10px;
+        .m-box {
+            margin: 10px;
             padding: 10px;
             border-radius: 4px;
             background-color: #1d93a8;
             color: #fff;
         }
-        .m-box h2{
+
+        .m-box h2 {
             margin-bottom: 10px;
         }
-        .m-box .title{
+
+        .m-box .title {
             color: #3fe6ff;
-            margin-bottom:5px;
-        }
-        .m-box p{
-            margin-bottom:10px;
-        }
-        .m-box p:last-child{
-            margin-bottom:0;
+            margin-bottom: 5px;
         }
 
+        .m-box p {
+            margin-bottom: 10px;
+        }
 
-        .u-btn{
+        .m-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .u-btn {
             display: inline-block;
             padding: 4px 8px;
             color: #fff;
             border: 1px solid transparent;
         }
-        .u-btn-1{
+
+        .u-btn-1 {
             background-color: #ff5d5d;
         }
-        .u-btn-2{
+
+        .u-btn-2 {
             border-color: #fff;
         }
-        .u-btn-lg{
+
+        .u-btn-lg {
             padding: 8px 20px;
         }
-        .u-btn-rd{
+
+        .u-btn-rd {
             border-radius: 20px;
         }
     </style>
@@ -122,19 +157,21 @@
 <div class="m-turn">
 
     <div class="text1">
-        <p class="count">今日还有1次抽奖机会</p>
+        <p class="count">今日还有 <span class="j-chance">3</span> 次抽奖机会</p>
         <a class="u-btn u-btn-2" href="javascript:;">分享</a>
     </div>
 
     <div class="turn">
         <div class="inner" id="j-turnBox">
-            <canvas id="c1" class="canvas"></canvas>
-            <img id="j-start" class="start" src="btn-start.png">
+            <canvas id="c1" class="canvas" width="422" height="422"></canvas>
+            <img id="j-start" class="start" src="img/btn-start.png">
         </div>
     </div>
 
     <div class="text2">
+        <p class="count">已抽奖次数 <span class="j-residue">0</span> 次</p>
         <a class="u-btn u-btn-1 u-btn-lg u-btn-rd" href="javascript:;">我的中奖纪录</a>
+        <div style="height: 10px;"></div>
     </div>
 
     <!-- 活动规则 -->
@@ -173,101 +210,181 @@
 </div>
 
 <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://www.datouwang.com/uploads/demo/jiaoben/2015/jiaoben532/js/awardRotate.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/Rotate.js"></script>
 <script>
-    $(function(){
-        var $turnBOx = $('#j-turnBox');
-        var w = $turnBOx.width();
-        $turnBOx.css('height', w);
+    $(function () {
 
         var turnplate = {
-            restaraunts:[
-                 "二等奖", "三等奖", "四等奖", "谢谢惠顾", "明天再来 ", "不要灰心", "继续抽奖", "参与奖"
-            ],				            //大转盘奖品名称
-            colors:["#5fd9c7", "#FFFFFF","#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF","#5fd9c7", "#FFFFFF"],        					//大转盘奖品区块对应背景颜色
-
-
-            startAngle:0,				//开始角度
-
-            bRotate:false				//false:停止;ture:旋转
+            //大转盘奖品名称
+            restaraunts: [
+                {"prize_id": "2", "prize_name": "一等奖"},
+                {"prize_id": "3", "prize_name": "二等奖"},
+                {"prize_id": "4", "prize_name": "三等奖"},
+                {"prize_id": "5", "prize_name": "谢谢参与"},
+                {"prize_id": "6", "prize_name": "不要灰心"},
+                {"prize_id": "7", "prize_name": "参与奖"},
+                {"prize_id": "8", "prize_name": "优惠券"},
+                {"prize_id": "1", "prize_name": "五等奖"}
+            ]
         };
+
+
         var turn = new Turn(turnplate);
+        var $canvas = $('#c1');
+        var argD = 360 / turnplate.restaraunts.length;    // 每圈的度数
+        var currentD = 0;                                 // 起始度数
+        var endD = 0;                                     // 结束度数
+        var turns = [5, 6, 7, 8, 9, 10];                  // 随机圈数
+        var $chance = $('.j-chance');
+        var $residue = $('.j-residue');
 
 
-
-        $('#j-start').click(function(){
-            console.log(turn.options.bRotate);
-            if(turn.options.bRotate){
+        $('#j-start').click(function () {
+            if (turn.options.bRotate) {
                 return;
             }
             turn.options.bRotate = !turn.options.bRotate;
 
-            $('#c1').stopRotate();
-            $('#c1').rotate({
-                angle:0,
-                animateTo:1800,
-                duration:8000,
-                callback:function (){
-//                    alert(txt);
-                    turn.options.bRotate = !turn.options.bRotate;
+
+            var iChance = parseInt($chance.html());
+            if (iChance == 0) {
+                alert('抽奖机会用完了，明天再来吧!');
+                return;
+            }
+
+            iChance--;
+            $chance.html(iChance);
+
+            var iResidue = parseInt($residue.html());
+            iResidue++;
+            $residue.html(iResidue);
+
+
+            $.ajax({
+                url: 'data.json',
+                error: function (err) {
+                    alert(err);
+                },
+                success: function (data) {
+                    if (data.errorCode > 0) {
+                        alert(data.message);
+                        return;
+                    }
+
+
+                    var _index = matchIndex(data.data.prize.prize_id, turn.options.restaraunts);
+
+                    endD = _index * (360 - argD) - argD / 2 + (turns[random(0, turns.length - 1)] * 360);
+
+                    $canvas.stopRotate();
+                    $canvas.rotate({
+                        duration: 5000,      //转动时间
+                        angle: currentD,     //默认角度
+                        animateTo: endD,     //转动角度
+                        easing: $.easing.easeInOutQuad,
+                        callback: function () {
+                            currentD = endD % 360;
+                            turn.options.bRotate = !turn.options.bRotate;
+
+                            if (data.data['is_winning']) {
+                                alert('恭喜你获得了' + data.data.prize.prize_name);
+                            } else {
+                                alert('xxxx');
+                            }
+
+                        }
+                    });
+
                 }
             });
         });
+
+
     });
 
-    function Turn(options){
-        var _defaults = {
 
-        };
+    // 匹配数组中的id，返回索引
+    function matchIndex(id, arr) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i]['prize_id'] == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // x~y的随机数
+    function random(x, y) {
+        return Math.round(Math.random() * (y - x) + x);
+    }
+
+    function Turn(options) {
+
         this.oc = document.getElementById('c1');
         this.oct = this.oc.getContext('2d');
         this.w = 422;
+
+        var _defaults = {
+            //大转盘奖品区块对应背景颜色
+            colors: ["#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF"],
+            //文字颜色
+            fontColors: ['#fee900', '#666', '#fee900', '#666', '#fee900', '#666', '#fee900', '#666'],
+            outsideRadius: this.w / 2 - 20,       //大转盘外圆的半径
+            insideRadius: 50,                   //大转盘内圆的半径
+            textRadius: 155,                    //大转盘奖品位置距离圆心的距离
+            startAngle: 0,				        //开始角度
+            bRotate: false				        //false:停止;ture:旋转
+        };
+
         this.options = $.extend(_defaults, options);
 
         this._init();
     }
 
     Turn.prototype = {
-        _init: function(){
+        _init: function () {
             this.oc.width = this.w;
             this.oc.height = this.w;
 
-            this.options.outsideRadius = this.w/2 - 20;		//大转盘外圆的半径
-            this.options.insideRadius = 50;			    //大转盘内圆的半径
-            this.options.textRadius = 155;				//大转盘奖品位置距离圆心的距离
 
-            var arc = Math.PI / ( this.options.restaraunts.length / 2);
-            this.oct.clearRect(0,0,this.w,this.w);
+            var arc = 2 * Math.PI / ( this.options.restaraunts.length);   // 平均每个弧度
+            this.options.arc = arc;
+            this.oct.clearRect(0, 0, this.w, this.w);
             this.oct.strokeStyle = 'transparent';
 
-            for(var i=0;i<this.options.restaraunts.length;i++){
+            for (var i = 0; i < this.options.restaraunts.length; i++) {
                 // 绘制圆
-                var angle = this.options.startAngle + i * arc;
+
+                var angle = this.options.startAngle + (i * arc - 2 * Math.PI);
                 this.oct.fillStyle = this.options.colors[i];
                 this.oct.beginPath();
-                this.oct.arc(this.w/2, this.w/2, this.options.outsideRadius, angle, angle + arc, false);
-                this.oct.arc(this.w/2, this.w/2, this.options.insideRadius, angle + arc, angle, true);
+                this.oct.arc(this.w / 2, this.w / 2, this.options.outsideRadius, angle, angle + arc, false);
+                this.oct.arc(this.w / 2, this.w / 2, this.options.insideRadius, angle + arc, angle, true);
                 this.oct.stroke();
                 this.oct.fill();
                 this.oct.save();
 
                 // 绘制奖品
-                this.oct.fillStyle = '#e5302f';
+                this.oct.fillStyle = this.options.fontColors[i];
                 this.oct.font = 'bold 22px "Helvetica Neue", Helvetica, Arial, sans-serif';
-                var text = this.options.restaraunts[i];
-                this.oct.translate(this.w/2 + Math.cos(angle+arc/2) * this.options.textRadius
-                , this.w/2 + Math.sin(angle + arc /2 ) * this.options.textRadius);
-                this.oct.rotate(angle + arc/2 + Math.PI / 2);
+                var text = this.options.restaraunts[i]['prize_name'];
+                this.oct.translate(
+                        this.w / 2 + Math.cos(angle + arc / 2) * this.options.textRadius,
+                        this.w / 2 + Math.sin(angle + arc / 2) * this.options.textRadius
+                );
+                this.oct.rotate(angle + arc / 2 + Math.PI / 2);
 
-                for(var j=0;j<text.length;j++){
-                    this.oct.fillText(text[j],-this.oct.measureText(text[j]).width/2, j*22);
+                for (var j = 0; j < text.length; j++) {
+                    this.oct.fillText(text[j], -this.oct.measureText(text[j]).width / 2, j * 22);
                 }
 
                 this.oct.restore();
 
             }
 
-        }
+        },
+
     };
 </script>
 </body>

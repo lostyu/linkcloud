@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #c1{
+            background-color: #000;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oC = document.getElementById('c1');
+            var oct = oC.getContext('2d');
+
+            oct.fillStyle = '#f00';
+            oct.beginPath();
+            oct.arc(220, 220, 100, 0, Math.PI, false);
+//            oct.arc(220, 220, 100, 0, 2*Math.PI, true);
+            oct.stroke();
+            oct.fill();
+            oct.save();
+        };
+    </script>
+</head>
+<body>
+
+<canvas id="c1" width="440" height="440"></canvas>
+
+</body>
+</html>
