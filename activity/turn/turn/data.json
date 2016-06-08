@@ -1,0 +1,16 @@
+{
+  "errCode": "0",
+  "message": "success",
+  "data": {
+    "is_winning": true,
+    "tips": "恭喜您中奖了!",
+    "prize": {
+      "prize_id": "8",
+      "prize_name": "优惠券",
+      "award_name": "一元现金券",
+      "coupon_type": "2",
+      "redpack_fee": "0"
+    }
+  },
+  "time": "1465277281"
+}

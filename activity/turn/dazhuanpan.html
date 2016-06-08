@@ -6,8 +6,8 @@
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
-    <title>幸运大转盘</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>{$event['event_name']}</title>
+    <link rel="stylesheet" href="/asset/event/turn/css/style.css">
     <!--<link rel="stylesheet" href="skin/blue/skin-blue.css">-->
 
 </head>
@@ -23,7 +23,7 @@
     <div class="turn">
         <div class="inner" id="j-turnBox">
             <canvas id="c1" class="canvas" width="422" height="422"></canvas>
-            <img id="j-start" class="start" src="img/btn-start.png">
+            <img id="j-start" class="start" src="/asset/event/turn/img/btn-start.png">
         </div>
     </div>
 
@@ -69,23 +69,23 @@
 </div>
 
 <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="js/Rotate.js"></script>
-<script src="js/turn.js"></script>
+<script src="/asset/event/turn/js/Rotate.js"></script>
+<script src="/asset/event/turn/js/turn.js"></script>
 <!--<script src="skin/blue/config.js"></script>-->
 <script>
+    var event_json_data = '{$EventJson}';
+    var json_data = JSON.parse(event_json_data);
+    console.log(json_data);
+
     $(function () {
 
         var turnplate = {
             //大转盘奖品名称
             restaraunts: [
-                {"prize_id": "2", "prize_name": "一等奖"},
-                {"prize_id": "3", "prize_name": "二等奖"},
-                {"prize_id": "4", "prize_name": "三等奖"},
-                {"prize_id": "5", "prize_name": "谢谢参与"},
-                {"prize_id": "6", "prize_name": "不要灰心"},
-                {"prize_id": "7", "prize_name": "参与奖"},
-                {"prize_id": "8", "prize_name": "优惠券"},
-                {"prize_id": "1", "prize_name": "五等奖"}
+                {"prize_id": "1", "prize_name": "我是奖项一"},
+                {"prize_id": "2", "prize_name": "二等奖"},
+                {"prize_id": "3", "prize_name": "三等奖"},
+                {"prize_id": "3", "prize_name": "三等奖"}
             ]
         };
 
@@ -118,8 +118,9 @@
 
 
             $.ajax({
-                url: 'data.json',
+                url: 'http://dev.linkcloud.mobi/event/lottery/lottery/9',
                 error: function (err) {
+                    console.log(err);
                     alert(err);
                 },
                 success: function (data) {
@@ -127,7 +128,6 @@
                         alert(data.message);
                         return;
                     }
-
 
 
                     turn.rotate(data, function(){
