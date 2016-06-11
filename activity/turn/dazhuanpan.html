@@ -7,7 +7,8 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
     <title>{$event['event_name']}</title>
-    <link rel="stylesheet" href="/asset/event/turn/css/style.css">
+    <!-- <link rel="stylesheet" href="/asset/event/turn/css/style.css"> -->
+    <link rel="stylesheet" href="css/style.css">
     <!--<link rel="stylesheet" href="skin/blue/skin-blue.css">-->
 
 </head>
@@ -23,7 +24,7 @@
     <div class="turn">
         <div class="inner" id="j-turnBox">
             <canvas id="c1" class="canvas" width="422" height="422"></canvas>
-            <img id="j-start" class="start" src="/asset/event/turn/img/btn-start.png">
+            <img id="j-start" class="start" src="img/btn-start.png">
         </div>
     </div>
 
@@ -68,31 +69,25 @@
 
 </div>
 
-<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="/asset/event/turn/js/Rotate.js"></script>
-<script src="/asset/event/turn/js/turn.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/Rotate.js"></script>
+<script src="js/turn.js"></script>
+<!-- <script src="/asset/event/turn/js/Rotate.js"></script>
+<script src="/asset/event/turn/js/turn.js"></script> -->
 <!--<script src="skin/blue/config.js"></script>-->
 <script>
-    var event_json_data = '{$EventJson}';
-    var json_data = JSON.parse(event_json_data);
-    console.log(json_data);
+    // var event_json_data = '{$EventJson}';
+    // var json_data = JSON.parse(event_json_data);
+    // console.log(json_data);
 
     $(function () {
 
-        var turnplate = {
-            //大转盘奖品名称
-            restaraunts: [
-                {"prize_id": "1", "prize_name": "我是奖项一"},
-                {"prize_id": "2", "prize_name": "二等奖"},
-                {"prize_id": "3", "prize_name": "三等奖"},
-                {"prize_id": "3", "prize_name": "三等奖"}
-            ]
-        };
+        var turnplate = {};
 
         // 是否有配置文件
-        if(window.turn){
-            $.extend(turnplate, window.turn);
-        }
+        // if(window.turn){
+        //     $.extend(turnplate, window.turn);
+        // }
 
 
         var turn = new Turn('c1', turnplate);
@@ -118,7 +113,8 @@
 
 
             $.ajax({
-                url: 'http://dev.linkcloud.mobi/event/lottery/lottery/9',
+                // url: 'http://dev.linkcloud.mobi/event/lottery/lottery/9',
+                url: 'data.json',
                 error: function (err) {
                     console.log(err);
                     alert(err);
