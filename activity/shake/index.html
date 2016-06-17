@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>摇一摇</title>
+    <link rel="stylesheet" href="../../res/libs/weui/lib/weui.min.css">
+    <link rel="stylesheet" href="../../res/libs/weui/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="m-shake">
+
+    <!-- 过渡页 -->
+    <div class="transit">
+        <a class="begin" href="javascript:;"> </a>
+    </div>
+    <!-- /过渡页 -->
+
+
+    <!-- 抽奖页 -->
+    <div class="lottery" id="j-lottery">
+        <div class="jinb j-jinb"><img style="display: none;" src="img/img-jinb.png" alt=""></div>
+        <div class="box j-box"></div>
+        <a href="javascript:;" class="jilu j-jilu"> </a>
+    </div>
+    <!-- /抽奖页 -->
+
+
+    <!-- 规则奖项 -->
+    <div class="tool">
+        <div class="weui-row">
+            <div class="weui-col-33 "><a href="javascript:;" class="u-btn">活动规则</a></div>
+            <div class="weui-col-33 "><a href="javascript:;" class="u-btn">奖项设置</a></div>
+            <div class="weui-col-33 "><a href="javascript:;" class="u-btn">分享</a></div>
+        </div>
+    </div>
+    <div class="modal settings">
+        <div class="modal-cnt">
+            <div class="body">
+                <h2 class="title">奖项设置</h2>
+                <div class="cnt">
+                    <p>一等奖:苹果i7</p>
+                    <p>一等奖:苹果i7</p>
+                    <p>一等奖:苹果i7</p>
+                    <p>一等奖:苹果i7</p>
+                </div>
+            </div>
+            <div class="ft">
+                <a href="javascript:;">关闭</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- /规则奖项 -->
+
+
+</div>
+
+<script src="../../res/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../../res/libs/weui/js/jquery-weui.min.js"></script>
+<script src="js/shake.js"></script>
+<script>
+    window.onload = function () {
+        var $jinb = $('.j-jinb');
+        var $jinbBox = $('.j-box');
+        var $jilu = $('.j-jilu');
+        var boxW = $('#j-lottery').width();
+        var t = $jinbBox.offset().top;
+        var imgUrl = $jinb.find('img').attr('src');
+        var bShake = true;
+
+        var myShakeEvent = new Shake({
+            threshold: 15
+        });
+
+        myShakeEvent.start();
+
+        window.addEventListener('shake', shakeEventDidOccur, false);
+
+
+        function shakeEventDidOccur() {
+            if(bShake){
+                bShake = false;
+
+                $.ajax({
+                    url: '',
+                    success: function(data){
+                        shakeAnimate();
+
+                        if(data.data.is_winings){
+                            alert();
+
+                            $.alert('', function(){
+                                bShake = true;
+                            });
+                        }
+                    }
+                });
+
+            }
+        }
+
+
+        function random(x, y){
+            return Math.round(Math.random()*(y-x)+x);
+        }
+
+        function shakeAnimate() {
+            $jinb.html('');
+            var _str = '';
+            for(var i=0;i<10;i++){
+                var x = random(50, boxW - 70);
+                var y = random(50, t - 30);
+                var w = random(15, 30);
+                _str += '<img class="move" style="left:'+ x +'px;top:'+ y +'px; width:'+w+'px;" src="'+ imgUrl +'" />';
+            }
+            $jinb.html(_str);
+        }
+
+    };
+</script>

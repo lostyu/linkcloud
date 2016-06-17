@@ -1,0 +1,46 @@
+a{
+    color: #000;
+}
+.m-turn .text1 {
+    color: #fff;
+}
+.m-turn .text2 .count {
+    color: #fff;
+}
+.m-box {
+    color: #fff;
+}
+.m-box .title {
+    color: #2DDDF5;
+}
+.u-btn {
+    color: #2DDDF5;
+}
+.m-turn .text1 .u-btn{
+    color: #2DDDF5;
+}
+
+
+html, body{
+    background-color: #05293D;
+    /*background: #30b6ce url(bg-body.png) no-repeat;*/
+    /*background-size: 100%;*/
+}
+.m-turn{
+    background-color: #05293D;
+}
+.m-turn .text1 .count {
+    background-color: #176D8C;
+}
+.m-box{
+    background-color: rgba(45,221,245,.5);
+}
+.u-btn-1 {
+    background-color: #176D8C;
+}
+
+
+.m-turn .turn .inner {
+    background: url(turnplate-bg.png) no-repeat;
+    background-size: 100%;
+}

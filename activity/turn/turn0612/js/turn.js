@@ -47,18 +47,28 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
 
 ;(function(){
 
+    // 匹配数组中的id，返回索引
+    function matchIndex(id, arr) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i]['prize_id'] == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     // x~y的随机数
     function random(x, y) {
         return Math.round(Math.random() * (y - x) + x);
     }
 
 
-    var argD = 0;                                     
-    var currentD = 0;                                 
-    var endD = 0;                                     
-    var turns = [5, 6, 7, 8, 9, 10];                  
-    var arrPrize = [];                                
-    var arrUnPrize = [];                              
+    var argD = 0;                                     // 每圈的度数
+    var currentD = 0;                                 // 起始度数
+    var endD = 0;                                     // 结束度数
+    var turns = [5, 6, 7, 8, 9, 10];                  // 随机圈数
+    var arrPrize = [];                                // 中奖的索引
+    var arrUnPrize = [];                              // 未中奖索引 
 
     function Turn(id, options) {
 
@@ -68,12 +78,31 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
         this.w = 422;
 
         var _defaults = {
-            outsideRadius: this.w / 2 - 20,       
-            insideRadius: 50,                   
-            textRadius: 155,                    
-            startAngle: 0,				        
-            bRotate: false,				        
-            roundLen: 12                         
+            //大转盘奖品区块对应背景颜色
+            // colors: ["#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF", "#5fd9c7", "#FFFFFF"],
+            //文字颜色
+            // fontColors: ['#fee900', '#666', '#fee900', '#666', '#fee900', '#666', '#fee900', '#666','#fee900', '#666','#fee900', '#666'],
+            //大转盘奖品名称
+            restaraunts: [
+                {"prize_id": "1", "prize_name": "一等奖"},
+                {"prize_name": "谢谢参与"},
+                {"prize_id": "2", "prize_name": "二等奖"},
+                {"prize_name": "不要灰心"},
+                {"prize_id": "3", "prize_name": "三等奖"},
+                {"prize_name": "再来一次"},
+                {"prize_id": "4", "prize_name": "四等奖"},
+                {"prize_name": "继续加油"},
+                {"prize_id": "5", "prize_name": "五等奖"},
+                {"prize_name": "未中奖"},
+                {"prize_id": "6", "prize_name": "六等奖"},
+                {"prize_name": "谢谢参与"}
+            ],
+            outsideRadius: this.w / 2 - 20,       //大转盘外圆的半径
+            insideRadius: 50,                   //大转盘内圆的半径
+            textRadius: 155,                    //大转盘奖品位置距离圆心的距离
+            startAngle: 0,				        //开始角度
+            bRotate: false,				        //false:停止;ture:旋转
+            roundLen: 12                         // 转盘划分
         };
 
         this.options = $.extend(_defaults, options);
@@ -94,34 +123,66 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
                 }
             }
 
+            console.log(arrPrize);
+            console.log(arrUnPrize);
+
             this.oc.width = this.w;
             this.oc.height = this.w;
 
-            var arc = 2 * Math.PI / ( this.options.roundLen);   
+
+            var arc = 2 * Math.PI / ( this.options.roundLen);   // 平均每个弧度
             this.options.arc = arc;
             this.oct.clearRect(0, 0, this.w, this.w);
+            // this.oct.strokeStyle = 'transparent';
 
             for (var i = 0; i < this.options.roundLen; i++) {
+                // 绘制圆
                 var angle = this.options.startAngle + (i * arc - 2 * Math.PI);
+                // this.oct.fillStyle = this.options.colors[i];
                 this.oct.beginPath();
                 this.oct.arc(this.w / 2, this.w / 2, this.options.outsideRadius, angle, angle + arc, false);
                 this.oct.arc(this.w / 2, this.w / 2, this.options.insideRadius, angle + arc, angle, true);
+                // this.oct.stroke();
+                // this.oct.fill();
                 this.oct.save();
             }
+
+
+
+            // for(var i=0;i<this.options.roundLen;i++){
+            //     var angle = this.options.startAngle + (i * arc - 2 * Math.PI);
+            //     // 绘制奖品
+            //     // this.oct.fillStyle = this.options.fontColors[i];
+            //     this.oct.font = 'bold 22px "Helvetica Neue", Helvetica, Arial, sans-serif';
+            //     var text = this.options.restaraunts[i]['prize_name'];
+            //     this.oct.translate(
+            //         this.w / 2 + Math.cos(angle + arc / 2) * this.options.textRadius,
+            //         this.w / 2 + Math.sin(angle + arc / 2) * this.options.textRadius
+            //     );
+            //     this.oct.rotate(angle + arc / 2 + Math.PI / 2);
+
+            //     for (var j = 0; j < text.length; j++) {
+            //         this.oct.fillText(text[j], -this.oct.measureText(text[j]).width / 2, j * 22);
+            //     }
+
+            //     this.oct.restore();
+            // }
 
         },
 
         rotate: function(data, callback){
             var _this = this;
             var _index = data.data['is_winning'] ? arrPrize[random(0,arrPrize.length-1)] : arrUnPrize[random(0,arrUnPrize.length-1)];
-            
+
+            console.log(_index);
+
             endD = _index * (360 - argD) - argD / 2 + (turns[random(0, turns.length - 1)] * 360);
 
             this.$canvas.stopRotate();
             this.$canvas.rotate({
-                duration: 5000,      
-                angle: currentD,     
-                animateTo: endD,     
+                duration: 5000,      //转动时间
+                angle: currentD,     //默认角度
+                animateTo: endD,     //转动角度
                 easing: $.easing.easeInOutQuad,
                 callback: function () {
                     currentD = endD % 360;

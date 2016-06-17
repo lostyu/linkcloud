@@ -1,0 +1,202 @@
+html, body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #13b5b1;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+a {
+    color: #fff;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.u-btn {
+    display: inline-block;
+    padding: 4px 8px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.m-shake {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.m-shake .lottery {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url(../img/bg-lottery.png) top center no-repeat;
+    background-size: cover;
+}
+
+.m-shake .lottery .jinb img{
+    position: absolute;
+    z-index: 1;
+    left:50%;
+    top:20%;
+    width:30px;
+}
+
+.m-shake .lottery .box {
+    position: absolute;
+    z-index: 2;
+    top: 40%;
+    width:100%;
+    height:40%;
+    background: url(../img/img-daizi.png) bottom center no-repeat;
+    background-size: auto 100%;
+
+}
+
+.m-shake .lottery .jilu {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    width: 150px;
+    height: 44px;
+    margin-left: -75px;
+    background: url(../img/bg-button2.png) no-repeat;
+    background-size: auto 100%;
+}
+
+.m-shake .transit {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url(../img/bg.png) top center no-repeat;
+    background-size: cover;
+}
+
+.m-shake .transit .begin {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    width: 150px;
+    height: 44px;
+    margin-left: -75px;
+    background: url(../img/bg-button.png) no-repeat;
+    background-size: auto 100%;
+}
+
+.m-shake .tool {
+    display: none;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 3;
+    top: 20px;
+    width: 100%;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.m-shake .modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.m-shake .modal-cnt {
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: #555;
+    font-size: 14px;
+}
+
+.m-shake .modal-cnt .title {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.m-shake .modal-cnt .cnt {
+    height: 180px;
+    overflow-y: auto;
+}
+
+.m-shake .modal-cnt .cnt p {
+    margin-bottom: 5px;
+}
+
+.m-shake .modal-cnt .body {
+    padding: 10px;
+}
+
+.m-shake .modal-cnt .ft a {
+    display: block;
+    border-top: 1px solid #ddd;
+    line-height: 35px;
+    color: #13b5b1;
+    text-align: center;
+}
+
+.move{
+    animation: move 3s linear forwards;
+}
+@keyframes move {
+    from {
+        opacity:1;
+    }
+    30%{
+        opacity:.5;
+    }
+    to {
+        top: 70%;
+        opacity:0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

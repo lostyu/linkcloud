@@ -82,7 +82,15 @@
 
     $(function () {
 
-        var turn = new Turn('c1');
+        var turnplate = {};
+
+        // 是否有配置文件
+        // if(window.turn){
+        //     $.extend(turnplate, window.turn);
+        // }
+
+
+        var turn = new Turn('c1', 'j-turnBox', turnplate);
         var $chance = $('.j-chance');
         var $residue = $('.j-residue');
 
@@ -104,9 +112,9 @@
             $residue.html(++iResidue);
 
 
-            $.ajax({                
-                url: 'http://dev.linkcloud.mobi/event/lottery/lottery/9',
-                // url: 'data.json',
+            $.ajax({
+                // url: 'http://dev.linkcloud.mobi/event/lottery/lottery/9',
+                url: 'data.json',
                 error: function (err) {
                     console.log(err);
                     alert(err);
@@ -116,6 +124,8 @@
                         alert(data.message);
                         return;
                     }
+
+
                     turn.rotate(data, function(){
                         if (data.data['is_winning']) {
                             alert('恭喜你获得了' + data.data.prize.prize_name);

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>modal</title>
+    <link rel="stylesheet" href="../../libs/weui/lib/weui.min.css">
+    <link rel="stylesheet" href="../../libs/weui/css/jquery-weui.min.css">
+</head>
+<body>
+
+
+<script src="../../libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../../libs/weui/js/jquery-weui.min.js"></script>
+<script>
+    $(function(){
+        $.modal({
+            title: "Hello",
+            text: "我是自定义的modal",
+            buttons: [
+                { text: "支付宝", onClick: function(){ console.log(1)} },
+                { text: "微信支付", onClick: function(){ console.log(2)} },
+                { text: "取消", className: "default", onClick: function(){ console.log(3)} },
+            ]
+        });
+    })
+</script>
+</body>
+</html>

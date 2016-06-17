@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>list</title>
+    <link rel="stylesheet" href="../../res/libs/weui/lib/weui.min.css">
+    <link rel="stylesheet" href="../../res/libs/weui/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="m-vote bgc">
+
+
+    <div class="weui_tab">
+        <div class="weui_tab_bd">
+
+            <div class="weui_search_bar" id="search_bar">
+                <form class="weui_search_outer">
+                    <div class="weui_search_inner">
+                        <i class="weui_icon_search"></i>
+                        <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/>
+                        <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+                    </div>
+                    <label for="search_input" class="weui_search_text" id="search_text">
+                        <i class="weui_icon_search"></i>
+                        <span>搜索</span>
+                    </label>
+                </form>
+                <a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>
+            </div>
+
+
+            <div class="listPage j-listPage">
+                <ul class="listBox">
+                    <li class="listItem">
+                        <div class="inner">
+                            <a class="link" href="javascript:;"><img class="pic" src="img/1.jpg" alt=""></a>
+                            <div class="title">001号:张晓晓</div>
+                            <div class="text">
+                                浏览：123次 投票：26次
+                            </div>
+                        </div>
+                    </li>
+                    <li class="listItem">
+                        <div class="inner">
+                            <a class="link" href="javascript:;"><img class="pic" src="img/2.jpg" alt=""></a>
+                            <div class="title">001号:张晓晓</div>
+                            <div class="text">
+                                浏览：123次 投票：26次
+                            </div>
+                        </div>
+                    </li>
+                    <li class="listItem">
+                        <div class="inner">
+                            <a class="link" href="javascript:;"><img class="pic" src="img/3.jpg" alt=""></a>
+                            <div class="title">001号:张晓晓</div>
+                            <div class="text">
+                                浏览：123次 投票：26次
+                            </div>
+                        </div>
+                    </li>
+                    <li class="listItem">
+                        <div class="inner">
+                            <a class="link open-popup" href="javascript:;" data-target="#detail"><img class="pic" src="img/4.jpg" alt=""></a>
+                            <div class="title">001号:张晓晓</div>
+                            <div class="text">
+                                浏览：123次 投票：26次
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="weui-infinite-scroll">
+                    <div class="infinite-preloader"></div>
+                    正在加载...
+                </div>
+            </div>
+        </div>
+        <div class="weui_tabbar">
+            <a href="javascript:;" class="weui_tabbar_item">首页</a>
+            <a href="javascript:;" class="weui_tabbar_item">我要参加</a>
+            <a href="javascript:;" class="weui_tabbar_item">活动规则</a>
+        </div>
+    </div>
+
+
+
+
+    <div id="detail" class="weui-popup-container">
+        <div class="weui-popup-modal">
+            <div class="m-detail">
+                <div class="img"><img src="img/4.jpg" alt=""></div>
+                <div class="title"></div>
+                <div class="des">介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍</div>
+                <p><a class="u-btn u-btn-2" href="javascript:;">关注</a><a class="u-btn u-btn-2" href="javascript:;">分享</a></p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="../../res/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../../res/libs/weui/js/jquery-weui.min.js"></script>
+<script>
+    $(function(){
+
+        // 滚动加载
+        var loading = false;  //状态标记
+        $('j-listPage').infinite().on("infinite", function() {
+            if(loading) return;
+            loading = true;
+            setTimeout(function() {
+                $("#list").append("<p> 我是新加载的内容 </p>");
+                loading = false;
+            }, 1500);   //模拟延迟
+        });
+
+
+
+    });
+</script>
+</body>
+</html>

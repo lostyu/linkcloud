@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>刮刮卡</title>
+    <link rel="stylesheet" href="../../res/libs/weui/lib/weui.min.css">
+    <link rel="stylesheet" href="../../res/libs/weui/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="m-ggk">
+    <a class="share u-btn u-btn-2 j-share" href="javascript:;">分享</a>
+
+    <div class="banner">
+        <img src="img/banner.png" alt="">
+    </div>
+
+    <div class="lottery bg1">
+        <div class="count">你还有 <span class="j-chance">0</span> 次机会</div>
+        <div class="guajiang">
+            <canvas id="c1" width="270" height="80"></canvas>
+        </div>
+        <div class="jilu"><a href="javascript:;">查看中奖纪录</a></div>
+    </div>
+
+    <!-- 活动规则 -->
+    <div class="m-box rule bg2">
+        <h2 class="title">活动规则</h2>
+        <p>长期（每天可以抽取一次）</p>
+
+        <p>所有关注微信公众账号用户均可以参加</p>
+
+        <p>单次消费1万元可以使用抵用券一张，不找零，不兑现</p>
+
+        <p>回复VIP进入会员中心，在“优惠券”选项中可以管理查看所有奖励</p>
+
+    </div>
+    <!-- /活动规则 -->
+
+    <!-- 奖品设置 -->
+    <div class="m-box settings bg2">
+        <h2 class="title">奖品设置</h2>
+
+        <p>一等奖：500元现金抵用券</p>
+
+        <p>二等奖：300元现金抵用券</p>
+
+        <p>三等奖：100元现金抵用券</p>
+
+        <p>四等奖：10元现金抵用券</p>
+
+    </div>
+    <!-- /奖品设置 -->
+
+</div>
+
+
+<script src="../../res/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../../res/libs/weui/js/jquery-weui.min.js"></script>
+<script src="js/scrape.js"></script>
+<script>
+    $(function () {
+
+        var oC = document.getElementById('c1');
+        var oCt = oC.getContext('2d');
+//        var ggk = new Scrape('c1', {
+//            bgc: '#000'
+//        });
+//        window.ggk = ggk;
+
+        oCt.beginPath();
+        oCt.fillStyle = '#000';
+        oCt.fillRect(0, 0, 270, 80);
+
+        oC.addEventListener('touchstart', function(ev){
+
+            oC.addEventListener('touchmove', function (ev) {
+                console.log(oC.getBoundingClientRect());
+                var x = ev.targetTouches[0].clientX;
+                var y = ev.targetTouches[0].clientY;
+
+//                console.log(x);
+//                console.log(y);
+
+                oCt.beginPath();
+                oCt.fillStyle = '#fff';
+                oCt.arc(x, y, 10, 0, Math.PI * 2);
+                oCt.fill();
+            }, false);
+
+
+        }, false);
+
+
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

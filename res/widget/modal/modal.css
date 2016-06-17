@@ -1,0 +1,46 @@
+.m-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.m-modal .container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 10px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 80%;
+    border-radius:2px;
+    background-color: #fff;
+}
+
+.m-modal .hd {
+
+}
+.m-modal .hd h2{
+    height:44px;
+}
+
+.m-modal .bd {
+    padding: 0 0 20px;
+}
+
+.m-modal .ft {
+    text-align: right;
+}
+.m-modal .ft a{
+    display: inline-block;
+    padding: 0 12px;
+    line-height:44px;
+}
+.m-modal .ft .primary{
+    color: #00ed00;
+}

@@ -1,0 +1,29 @@
+/* reset */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font: 16px/1.14 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+
+h1, h2{
+    font-size: 18px;
+}
+
+a{
+    color: #333;
+    text-decoration: none;
+}
