@@ -1,0 +1,19 @@
+<form>
+	<p>
+		<label>email</label>
+		<input type="text" ng-model="userInfo.email">
+	</p>
+	<p>
+		<label>password</label>
+		<input type="password" ng-model="userInfo.password">
+	</p>
+	<p>
+		<label>remeber</label>
+		<input type="checkbox" ng-model="userInfo.autoLogin">
+	</p>
+	<p>
+		<button ng-click="getData()">getData</button>
+		<button ng-click="setData()">setData</button>
+		<button ng-click="resetData()">resetData</button>
+	</p>
+</form>

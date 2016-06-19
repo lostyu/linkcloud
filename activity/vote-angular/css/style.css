@@ -1,0 +1,122 @@
+html,body{
+    position: relative;
+    width:100%;
+    height:100%;
+    min-height:100%;
+}
+a{
+    color: #000;
+}
+img{
+    max-width: 100%;
+}
+
+.f-mb10{
+    margin-bottom:10px;
+}
+.f-mb20{
+    margin-bottom:20px;
+}
+.f-fl{
+    float: left;
+}
+.f-fr{
+    float: right;
+}
+
+.u-btn{
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+}
+.u-btn-1{
+    color: #fff;
+    background-color: #13b5b1;
+    border-color: #13b5b1;
+}
+.u-btn-2{
+    background-color: transparent;
+    border-color: #fff;
+}
+.u-btn-block{
+    display: block;
+}
+
+.m-detail{}
+.m-detail .img{
+    /*height:200px;*/
+}
+.m-detail .title{}
+.m-detail .des{}
+
+.m-vote{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.m-vote.bg{
+    background: url(../img/bg.jpg) center top no-repeat;
+    background-size: cover;
+}
+.m-vote.bgc{
+    background-color: #ededef;
+}
+.m-vote .tool{
+    position: absolute;
+    left:20px;
+    right:20px;
+    bottom:10%;
+}
+.m-vote .tool .u-btn-2{
+    width:33%;
+}
+
+.m-vote .weui_tabbar a{
+    padding-top:0;
+    line-height:50px;
+    border-left:1px solid #ddd;
+    font-size: 14px;
+    text-align: center;
+}
+.m-vote .weui_tabbar a:first-child{
+    border-left:none;
+}
+
+.m-vote .listPage{
+    padding:10px;
+}
+.m-vote .listPage .listBox{
+    overflow: hidden;
+    list-style: none;
+    margin: -5% 0 0 -5%;
+}
+.m-vote .listBox .listItem{
+    float: left;
+    width: 45%;
+    margin-top:5%;
+    margin-left:5%;
+}
+.m-vote .listBox .listItem .inner{
+    padding:5px;
+    background-color: #fff;
+    font-size:14px;
+    border-right:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+}
+.m-vote .listBox .listItem .link{
+    display: block;
+}
+.m-vote .listBox .listItem .pic{
+    display: block;
+    width:100px;
+    height:100px;
+}
+
+
+
+.m-vote .votePage{}
