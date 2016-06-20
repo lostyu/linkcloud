@@ -1,7 +1,54 @@
-<ul>
-	<li>1</li>
-	<li>1</li>
-	<li>1</li>
-	<li>1</li>
-	<li>1</li>
-</ul>
+<div class="m-vote bgc">
+
+
+    <div class="weui_tab">
+        <div class="weui_tab_bd">
+
+            <div class="weui_search_bar" id="search_bar">
+                <form class="weui_search_outer">
+                    <div class="weui_search_inner">
+                        <i class="weui_icon_search"></i>
+                        <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/>
+                        <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+                    </div>
+                    <label for="search_input" class="weui_search_text" id="search_text">
+                        <i class="weui_icon_search"></i>
+                        <span>搜索</span>
+                    </label>
+                </form>
+                <a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>
+            </div>
+
+
+            <div class="listPage j-listPage">
+                <ul class="listBox">
+                    <li class="listItem" ng-repeat="item in items">
+                        <div class="inner">
+                            <a class="link" ui-sref="detail({id: item.id})"><img class="pic" ng-src="{{item.imgUrl}}" alt=""></a>
+                            <div class="title">{{item.id}}号:{{item.name}}</div>
+                            <div class="text">
+                                浏览：{{item.view}}次 投票：{{item.vote}}次
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!--<div class="weui-infinite-scroll">-->
+                    <!--<div class="infinite-preloader"></div>-->
+                    <!--正在加载...-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="weui_tabbar">
+            <a ui-sref="index" class="weui_tabbar_item">首页</a>
+            <a ui-sref="signUp" class="weui_tabbar_item">我要参加</a>
+            <a href="javascript:;" class="weui_tabbar_item" ng-click="showModal()">活动规则</a>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+

@@ -1,1 +1,76 @@
-detail
+<div class="m-detail">
+
+    <div class="userInfo">
+        <div class="img" style="background-image: url({{userInfo.imgUrl}});"></div>
+        <div class="bd f-clear">
+            <div class="title">{{userInfo.id}}号：{{userInfo.name}} <span class="f-fr"><img class="u-icon" src="img/icon-x.png" alt=""> {{userInfo.vote}}</span></div>
+            <div class="des">{{userInfo.des}}</div>
+            <p class="f-fr"><a class="u-btn u-btn-3 u-btn-sm" href="javascript:;">分享</a></p>
+        </div>
+    </div>
+
+
+    <div class="m-pinglun">
+        <div class="title">共37条评论</div>
+        <ul class="infoList">
+            <li>
+                <div class="pic"><img src="img/4.jpg" alt=""></div>
+                <div class="cnt">
+                    <div class="top">
+                        <h3 class="name">发生的风口浪尖</h3>
+                        <span class="date">2016-06-14</span>
+                    </div>
+                    <div class="text">
+                        菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pic"><img src="img/4.jpg" alt=""></div>
+                <div class="cnt">
+                    <div class="top">
+                        <h3 class="name">发生的风口浪尖</h3>
+                        <span class="date">2016-06-14</span>
+                    </div>
+                    <div class="text">
+                        菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pic"><img src="img/4.jpg" alt=""></div>
+                <div class="cnt">
+                    <div class="top">
+                        <h3 class="name">发生的风口浪尖</h3>
+                        <span class="date">2016-06-14</span>
+                    </div>
+                    <div class="text">
+                        菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pic"><img src="img/4.jpg" alt=""></div>
+                <div class="cnt">
+                    <div class="top">
+                        <h3 class="name">发生的风口浪尖</h3>
+                        <span class="date">2016-06-14</span>
+                    </div>
+                    <div class="text">
+                        菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子菲律宾的鸽子
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="m-btn-pinglun">
+        <div ng-if="bShowBtn">
+            <a class="btn" href="javascript:;" ng-click="showPl()"><img src="img/icon-edit.png" alt="">  我要评论</a>
+        </div>
+        <div class="cnt" ng-if="bShowCnt">
+            <div class="ctrl"><a style="margin-right: 5px;" class="btn1 u-btn-1" href="javascript:;" ng-click="saveCommit()">提交</a><a class="btn2" href="javascript:;" ng-click="cancelCommit()">取消</a></div>
+            <div class="ipt"><textarea></textarea></div>
+        </div>
+    </div>
+</div>
