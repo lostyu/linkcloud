@@ -1,24 +1,27 @@
 <div class="m-bodyBox bg">
     <div class="bodyInner">
-        <form id="">
-            <div style="display: -none;" class="m-voteForm">
-                <div class="weui_cells weui_cells_form">
-                    <div class="weui_cell">
+        <form name="myForm" novalidate>
+            <div ng-show="!showNext" class="m-voteForm">
+                <div class="weui_cells weui_cells_form" style="margin-top: 40px;">
+                    <div class="weui_cell" ng-class="{weui_cell_warn: myForm.uname.$invalid}">
                         <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
                         <div class="weui_cell_bd weui_cell_primary">
-                            <input class="weui_input" type="text" placeholder="请输入姓名" required>
+                            <input class="weui_input" name="uname" ng-model="user.name" type="text" placeholder="请输入姓名"
+                                   required>
                         </div>
                     </div>
-                    <div class="weui_cell">
+                    <div class="weui_cell" ng-class="{weui_cell_warn: isUnTel}">
                         <div class="weui_cell_hd"><label class="weui_label">电话</label></div>
                         <div class="weui_cell_bd weui_cell_primary">
-                            <input class="weui_input" type="tel" placeholder="请输入电话" required>
+                            <input class="weui_input" name="utel" ng-model="user.tel" type="tel" placeholder="请输入电话"
+                                   ng-change="checkTel()">
                         </div>
                     </div>
-                    <div class="weui_cell">
+                    <div class="weui_cell" ng-class="{weui_cell_warn: myForm.uarea.$invalid}">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <textarea class="weui_textarea" placeholder="参赛宣言" rows="3" required></textarea>
-                            <div class="weui_textarea_counter"><span>0</span>/200</div>
+                            <textarea class="weui_textarea" name="uarea" ng-model="user.text" placeholder="参赛宣言"
+                                      rows="3" required ng-change="checkText()"></textarea>
+                            <div class="weui_textarea_counter"><span>{{len}}</span>/200</div>
                         </div>
                     </div>
                 </div>
@@ -27,27 +30,32 @@
                         <div class="weui-col-50"><a href="javascript:history.back();"
                                                     class="weui_btn weui_btn_default">返回</a>
                         </div>
-                        <div class="weui-col-50"><a href="javascript:;" class="weui_btn weui_btn_primary" ng-disabled="custom_form.$invalid">下一步</a></div>
+                        <div class="weui-col-50">
+                            <button ng-click="checkValid(myForm)" class="weui_btn weui_btn_primary">下一步</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div style="display: none;" class="m-voteImg">
-            <div class="imgBox">
-                <div class="inner"></div>
-            </div>
-            <div class="btn">
-                <div class="weui-row">
-                    <div class="weui-col-100" style="margin-bottom:10px;"><a href="javascript:;"
-                                                                             class="weui_btn weui_btn_primary">上传照片</a>
+            <div ng-show="showNext" class="m-voteImg" style="display: block;">
+                <div class="imgBox">
+                    <div class="inner" ng-if="showImgBox" style="background-image: url({{imgUrl}});"></div>
+                </div>
+                <div class="btn">
+                    <div class="weui-row">
+                        <div class="weui-col-100" style="margin-bottom:10px;">
+                            <div class="m-fileUpload">
+                                <input type="file" custom-on-change="uploadFile">
+                                <a href="javascript:;" class="weui_btn weui_btn_primary">上传照片</a>
+                            </div>
+                        </div>
+                        <div class="weui-col-50"><a href="javascript:history.back();"
+                                                    class="weui_btn weui_btn_default">取消</a>
+                        </div>
+                        <div class="weui-col-50"><a href="javascript:;" class="weui_btn weui_btn_default">确定</a></div>
                     </div>
-                    <div class="weui-col-50"><a href="javascript:history.back();"
-                                                class="weui_btn weui_btn_default">取消</a>
-                    </div>
-                    <div class="weui-col-50"><a href="javascript:;" class="weui_btn weui_btn_default">确定</a></div>
                 </div>
             </div>
-        </div>
         </form>
     </div>
 </div>

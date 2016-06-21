@@ -1,5 +1,7 @@
 <div class="m-vote bgc">
 
+    <div ui-view="list">11</div>
+    <div ui-view="detail">222</div>
 
     <div class="weui_tab">
         <div class="weui_tab_bd">
@@ -27,7 +29,9 @@
                             <a class="link" ui-sref="detail({id: item.id})"><img class="pic" ng-src="{{item.imgUrl}}" alt=""></a>
                             <div class="title">{{item.id}}号:{{item.name}}</div>
                             <div class="text">
-                                浏览：{{item.view}}次 投票：{{item.vote}}次
+                                <p>浏览：{{item.view}}次</p>
+                                <p>投票：{{item.vote}}次</p>    
+                                <a class="j-vote u-icon-x none" href="javascript:;"></a>            
                             </div>
                         </div>
                     </li>

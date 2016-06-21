@@ -81,6 +81,15 @@ img {
     height: 20px;
     vertical-align: middle;
 }
+.u-icon-x{
+    width: 24px;
+    height: 24px;
+    background: url(../img/icon-x.png) center no-repeat;
+    background-size: contain;
+}
+.u-icon-x.none{
+    background-image: url(../img/icon-x-none.png);
+}
 
 .m-pinglun {
     padding: 0 10px 40px;
@@ -214,8 +223,9 @@ img {
 }
 
 .m-detail .img {
-    height: 200px;
-    background-position: center top;
+    height: 320px;
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: 100%;
 }
 
@@ -290,15 +300,16 @@ img {
 .m-vote .listPage .listBox {
     overflow: hidden;
     list-style: none;
-    margin: -5% 0 0 -5%;
+    margin: -2% 0 0 -2%;
 }
 
 .m-vote .listBox .listItem {
     float: left;
-    width: 45%;
-    margin-top: 5%;
-    margin-left: 5%;
+    width: 48%;
+    margin-top: 2%;
+    margin-left: 2%;
 }
+
 
 .m-vote .listBox .listItem .inner {
     padding: 5px;
@@ -306,16 +317,31 @@ img {
     font-size: 14px;
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    font-size: 14px;
 }
 
 .m-vote .listBox .listItem .link {
-    display: block;
+    display: block;    
+}
+.m-vote .listBox .listItem .title{
+    margin-top: 5px;
+    text-align: center;
+}
+.m-vote .listBox .listItem .text{
+    position: relative;
+    font-size: 14px;
+    color: #999;
+}
+.m-vote .listBox .listItem .text .u-icon-x{
+    position: absolute;
+    right: 0;
+    bottom: 0;    
 }
 
 .m-vote .listBox .listItem .pic {
     display: block;
     max-width: 100%;
-    height: 150px;
+    height: 180px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -415,3 +441,42 @@ img {
     color: #13b5b1;
     text-align: center;
 }
+
+
+
+/*  */
+.m-fileUpload{
+    position: relative;
+}
+.m-fileUpload input{
+    position: absolute;
+    z-index:10;
+    width:100%;
+    height:100%;
+    opacity:0;
+
+}
+.m-fileUpload a{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
