@@ -1,8 +1,5 @@
 <div class="m-vote bgc">
 
-    <div ui-view="list">11</div>
-    <div ui-view="detail">222</div>
-
     <div class="weui_tab">
         <div class="weui_tab_bd">
 
@@ -31,7 +28,7 @@
                             <div class="text">
                                 <p>浏览：{{item.view}}次</p>
                                 <p>投票：{{item.vote}}次</p>    
-                                <a class="j-vote u-icon-x none" href="javascript:;"></a>            
+                                <a class="j-vote u-icon-x none" ng-click="vote(item.id)" href="javascript:;"></a>
                             </div>
                         </div>
                     </li>
