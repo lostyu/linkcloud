@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="plunker">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>test3</title>
+</head>
+<body>
+
+<div ng-controller="MainCtrl">
+    <label ng-repeat="(color,enabled) in colors">
+        <input type="checkbox" ng-model="colors[color]"/> {{color}}
+    </label>
+    <p>colors: {{colors}}</p>
+
+    <button ng-click="show()">show</button>
+</div>
+
+<script src="frames/angularjs/angular.min.js"></script>
+<script>
+    var app = angular.module('plunker', []);
+
+    app.controller('MainCtrl', function ($scope) {
+        $scope.colors = {Blue: true, Orange: true};
+
+        $scope.show = function () {
+            var arr = [];
+            for (var i in $scope.colors) {
+                if ($scope.colors[i] == true) {
+                    arr.push(i);
+                }
+            }
+            console.log(arr);
+        };
+    });
+</script>
+</body>
+</html>
