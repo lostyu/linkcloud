@@ -1,0 +1,31 @@
+/*================ S reset ================*/
+html, body{
+    overflow-x: hidden;
+    height:100%;
+    background-color: #f0f0f0;
+}
+img {
+    max-width: 100%;
+}
+a{
+    color: #000;
+}
+
+/*================ E reset ================*/
+
+/*================ S plugins ================*/
+
+/*================ E plugins ================*/
+
+/*================ S module ================*/
+.m-banner{
+    height:180px;
+}
+.m-banner .swiper-pagination-bullet-active{
+    background: #fff;
+}
+
+.m-nav{
+    background-color: #fff;
+}
+/*================ E module ================*/
