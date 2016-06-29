@@ -1,0 +1,153 @@
+.m-box {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #555;
+}
+
+.m-box h2 {
+    margin-bottom: 10px;
+}
+
+.m-box .title {
+    color: #3fe6ff;
+    margin-bottom: 5px;
+}
+
+.m-box p {
+    margin-bottom: 10px;
+}
+
+.m-box p:last-child {
+    margin-bottom: 0;
+}
+
+.u-btn {
+    display: inline-block;
+    padding: 4px 8px;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.u-btn-1 {
+    background-color: #ff5d5d;
+}
+
+.u-btn-2 {
+    border-color: #fff;
+}
+
+.u-btn-lg {
+    padding: 8px 20px;
+}
+
+.u-btn-rd {
+    border-radius: 20px;
+}
+
+.c1{
+    color: #359df6;
+}
+
+.banner img{
+    display: block;
+}
+
+body {
+    position: relative;
+    min-height:100%;
+    /*background: #df2937 url(../img/bg.png) no-repeat;*/
+    background-size: 100%;
+    background-color: #ddd;
+    overflow-x: hidden;
+}
+
+img{
+    max-width:100%;
+}
+
+.m-ggk {
+    position: relative;
+}
+
+.m-ggk .bg1 {
+    background: #f18d0a url(../img/bg-jinb.png) bottom right no-repeat;
+    background-size: 100%;
+}
+
+.m-ggk .bg2 {
+    background: #f18d0a url(../img/bg-box.png) no-repeat;
+    background-size: 100%;
+}
+
+.m-ggk .share{
+    position: absolute;
+    right:10px;
+    top:10px;
+    border-radius: 12px;
+    line-height:1.2;
+}
+
+
+.m-ggk .lottery {
+    position: relative;
+    margin: 24px 10px 24px;
+}
+.m-ggk .lottery .count{
+    position: relative;
+    left:-4px;
+    top:5px;
+    width:180px;
+    height:35px;
+    line-height:35px;
+    background: url(../img/bg-count.png) no-repeat;
+    background-size: auto 35px;
+    font-size:14px;
+    color: #fff;
+    text-indent: 1em;
+}
+.m-ggk .lottery .count span{
+    color: #f00;
+}
+.m-ggk .lottery .guajiang{
+    width: 90%;
+    height:80px;
+    margin: 20px auto;
+    border:4px solid #fff;
+    border-radius: 4px;
+    /*background-color: #b6b6b6;*/
+}
+.m-ggk .lottery canvas{
+    width:100%;
+    height:100%;
+    /*background: #b6b6b6 url(../img/bg-jinb2.png) no-repeat;*/
+}
+.m-ggk .lottery .jilu{
+    line-height:44px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    text-align: center;
+}
+.m-ggk .lottery .jilu a{
+    display: block;
+    line-height:44px;
+    color: #fff;
+}
+
+.m-ggk .m-box {
+    margin-bottom: 24px;
+    border-radius: 0;
+}
+
+.m-ggk .m-box .title {
+    text-align: left;
+    font-size: 18px;
+    font-weight: normal;
+    color: #333;
+}
+
+.m-ggk .m-box p {
+    font-size: 14px;
+}
+
