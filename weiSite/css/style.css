@@ -1,31 +1,97 @@
 /*================ S reset ================*/
-html, body{
+html, body {
     overflow-x: hidden;
-    height:100%;
+    height: 100%;
     background-color: #f0f0f0;
 }
+
 img {
     max-width: 100%;
 }
-a{
+
+a {
     color: #000;
 }
 
 /*================ E reset ================*/
+.f-vam {
+    vertical-align: middle;
+}
 
 /*================ S plugins ================*/
 
 /*================ E plugins ================*/
 
 /*================ S module ================*/
-.m-banner{
-    height:180px;
+.m-banner {
+    height: 180px;
 }
-.m-banner .swiper-pagination-bullet-active{
+
+.m-banner .swiper-pagination-bullet-active {
     background: #fff;
 }
 
-.m-nav{
+.m-title{
+    position: fixed;
+    z-index:10;
+    top: 0;
+    left:0;
+    right:0;
+    height:44px;
+    line-height:44px;
+    text-align: center;
+    color: #fff;
+    background-color: #666;
+    font-weight: normal;
+    font-size:20px;
+}
+.m-title-h{
+    height:44px;
+}
+
+.m-nav {
     background-color: #fff;
 }
+.m-nav .weui_grid{
+    display: table;
+}
+.m-nav .pd{
+    display: table-cell;
+    /*width:100%;*/
+    height: 80px;
+    vertical-align: middle;
+}
+
+.m-article .top {
+    margin-bottom: 20px;
+}
+
+.m-article .top h1 {
+    margin-bottom: 0;
+    color: #000;
+    font-size: 22px;
+}
+
+.m-article .top .meta {
+    font-size: 12px;
+    color: #777;
+}
+
+.m-article .top .meta span {
+    margin-right: 5px;
+}
+
+.m-article .top .meta a {
+    color: #61749B;
+}
+
+.m-article .ft {
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
 /*================ E module ================*/
+
+.weui_tabbar_item.weui_bar_item_on .iconfont{
+    color: #09bb07;
+}
