@@ -1,0 +1,194 @@
+/* reset */
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+img{
+    /*max-width: 100%;*/
+    width:100%;
+    display: block;
+}
+
+html, body {
+    font: 16px/1.14 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #fdd727 url(../img/bg-body.png);
+    background-size: 100% auto;
+}
+
+.m-turn {
+    padding-top: 20px;
+    background: url(../img/bg-turn.jpg) center top no-repeat;
+    background-size: 100% auto;
+}
+
+.m-turn .text1 {
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+.m-turn .text1 .count {
+    display: inline-block;
+    padding: 0 16px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 20px;
+    background-color: #dc3e35;
+    font-size: 14px;
+}
+
+.m-turn .text1 .u-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    border-radius: 12px;
+}
+
+
+.m-turn .text2 {
+    text-align: center;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1;
+    padding-top: 15%;
+}
+
+.m-turn .text2 .count {
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.m-box {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(250,229,153,.47);
+    color: #666;
+    font-size:14px;
+}
+
+.m-box h2 {
+    margin-bottom: 10px;
+}
+
+.m-box .title {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.m-box p {
+    margin-bottom: 10px;
+}
+
+.m-box p:last-child {
+    margin-bottom: 0;
+}
+
+.rule{
+    margin-top:-4.5%;
+}
+
+.zwf{
+    padding-top: 126.5333333333333%;
+}
+
+.u-btn {
+    display: inline-block;
+    padding: 4px 8px;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.u-btn-1 {
+    background-color: #ff5d5d;
+}
+
+.u-btn-2 {
+    border-color: #fff;
+}
+
+.u-btn-lg {
+    padding: 8px 20px;
+}
+
+.u-btn-rd {
+    border-radius: 20px;
+}
+
+
+.m-turn .turn{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top:20px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.m-turn .bg{
+    width:91.46666666666667%;
+    position: absolute;
+    /*padding-top: 16.26666666666667%;*/
+    left: 50%;
+    margin-left:-45.73333333333334%;
+    top:0;
+    z-index:2;
+    /*background: url(../img/bg.png) no-repeat;*/
+    /*background-size: cover;*/
+}
+.m-turn  .pointer{
+    position: absolute;
+    /*left: 50%;*/
+    /*top:50%;*/
+    /*width:30%;*/
+    width:40.66666666666667%;
+    padding-top: 25.06666666666667%;
+    top:0;
+    left:52%;
+    margin-left: -20.33333333333334%;
+    z-index:3;
+
+}
+.m-turn .turn .pointer img{
+    width:100%;
+}
+
+
+.m-turn .dipan{
+    position: absolute;
+    width:100%;
+    padding-top: 77.06666666666667%;
+    top:0;
+    left:0;
+    z-index:1;
+}
+
+.dipan_temp{
+    position: relative;
+}
+
+.m-turn .zhuanpan{
+    position: relative;
+    width:100%;
+    margin-top: 20px;
+}
+
+.hx_btn{
+    font-size: 12px;
+}

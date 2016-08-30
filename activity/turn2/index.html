@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>index</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="m-turn">
+    <div class="text1">
+        <p class="count">今日还有 <span class="j-chance">3</span> 次抽奖机会</p>
+        <a class="u-btn u-btn-2" href="javascript:;">分享</a>
+    </div>
+
+
+    <div class="zhuanpan">
+
+        <div class="bg"><img src="img/bg.png"></div>
+
+        <!--<div class="turn j-turn">-->
+
+        <!--</div>-->
+
+        <div class="pointer"><img class="j-btn-start" src="img/btn-start2.png"></div>
+
+        <div class="dipan">
+            <div class="dipan_temp">
+                <img src="img/bg-dp.png" alt="">
+                <div class="text2">
+                    <p class="count">已抽奖次数 <span class="j-residue">0</span> 次</p>
+                    <a class="u-btn u-btn-1 u-btn-lg u-btn-rd hx_btn" href="javascript:;">我的中奖纪录</a>
+                    <div style="height: 10px;"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+    <!-- 活动规则 -->
+    <div class="zwf"></div>
+
+    <img src="img/bg-hdsm.png">
+    <div class="m-box rule">
+        <h2>活动规则</h2>
+        <p class="title">抽奖时间</p>
+        <p>长期（每天可以抽取一次）</p>
+
+        <p class="title">抽奖资格</p>
+        <p>所有关注微信公众账号用户均可以参加</p>
+
+        <p class="title">奖品说明</p>
+        <p>单次消费1万元可以使用抵用券一张，不找零，不兑现</p>
+
+        <p class="title">备注</p>
+        <p>回复VIP进入会员中心，在“优惠券”选项中可以管理查看所有奖励</p>
+
+        <br >
+        <br >
+        <h2>奖品设置</h2>
+
+        <p>一等奖：500元现金抵用券</p>
+
+        <p>二等奖：300元现金抵用券</p>
+
+        <p>三等奖：100元现金抵用券</p>
+
+        <p>四等奖：10元现金抵用券</p>
+    </div>
+    <!-- /活动规则 -->
+
+</div>
+
+
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jQueryRotate.2.2.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script>
+    $(function () {
+
+        // 初始化转盘宽高
+        (function () {
+            var $turn = $('.j-turn');
+            var w = $turn.width();
+            $turn.height(w);
+        })();
+
+        //
+        (function () {
+            var arrLotteryAngle = [0, 72, 144, 216, 288];
+            var arrNoLotteryAngle = [36, 108, 180, 252, 324];
+            var curAngle = 0;
+            var $btnStart = $('.j-btn-start');
+            var timeOut = function () {
+                $btnStart.rotate({
+                    angle: 0,
+                    duration: 10000,
+                    animateTo: 2160,
+                    callback: function () {
+                        alert('网络超时')
+                    }
+                });
+            };
+
+            var rotateFunc = function (angle, text) {
+
+                $btnStart.stopRotate();
+
+                curAngle = $btnStart.getRotateAngle();
+
+                $btnStart.rotate({
+                    angle: curAngle,
+                    duration: 5000,
+                    animateTo: angle + 7200,
+                    callback: function () {
+                        alert(text);
+                        curAngle = angle + 7200;
+                    },
+                    easing: $.easing.easeOutQuart
+                });
+
+            };
+
+            $btnStart.click(function () {
+
+                // 点击指针开始旋转
+                $btnStart.rotate({
+                    angle: 0,
+                    duration: 5000,
+                    animateTo: 7200,
+                    easing: $.easing.swing
+                });
+
+                // ajax请求
+                setTimeout(function () {
+                    rotateFunc(324, 'xxx');
+
+                }, 2000);
+            });
+
+        })();
+
+    });
+</script>
+</body>
+</html>

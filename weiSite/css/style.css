@@ -62,6 +62,10 @@ a {
     vertical-align: middle;
 }
 
+.m-article{
+    padding: 15px;
+}
+
 .m-article .top {
     margin-bottom: 20px;
 }
@@ -89,6 +93,8 @@ a {
     padding-top: 10px;
     border-top: 1px solid #ddd;
 }
+
+
 
 /*================ E module ================*/
 
