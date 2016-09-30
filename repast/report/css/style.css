@@ -162,6 +162,21 @@ li{
 }
 
 
+.m-empty{
+    margin:10px;
+    padding: 50px 0;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: #ddd;
+}
+.m-empty span{
+    display: inline-block;
+    padding: 10px;
+    background-color: #ddd;
+    color: #999;
+    font-size:14px;
+}
+
 .doc{
     position: absolute;
     left:0;
